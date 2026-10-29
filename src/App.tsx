@@ -26,7 +26,7 @@ function App() {
 
   return (
     <main>
-      <h1>Unix timestamp 변환기</h1>
+      <h1 className="text-3xl font-bold underline">Unix timestamp 변환기</h1>
 
       <form onSubmit={handleSubmit}>
         <label htmlFor="timestamp">Unix timestamp</label>
