@@ -30,3 +30,12 @@ export function timestampToUtc(input: string): string {
 
   return date.toISOString().slice(0, 19).replace('T', ' ');
 }
+
+const getSupportedTimestampRange = () => {
+  return {
+    minSeconds: Date.parse('0000-01-01T00:00:00Z') / 1000,
+    maxSeconds: Date.parse('9999-12-31T23:59:59Z') / 1000
+  };
+};
+
+console.log(getSupportedTimestampRange());

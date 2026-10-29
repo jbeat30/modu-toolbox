@@ -32,3 +32,10 @@ test('날짜 지원 범위를 벗어난 timestamp는 오류로 처리', () => {
 test.each(['253402300800', '-62167219201'])('네 자리 연도 범위를 벗어난 입력 "%s"는 오류로 처리', (input) => {
   expect(() => timestampToUtc(input)).toThrow('변환 가능한 날짜 범위를 벗어났습니다.');
 });
+
+test.each([
+  ['-62167219200', '0000-01-01 00:00:00'],
+  ['253402300799', '9999-12-31 23:59:59']
+])('지원 범위의 경계 입력 "%s"를 UTC 결과 "%s"로 변환', (input, expected) => {
+  expect(timestampToUtc(input)).toBe(expected);
+});
