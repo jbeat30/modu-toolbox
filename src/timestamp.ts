@@ -18,6 +18,15 @@ export function timestampToUtc(input: string): string {
 
   const seconds = Number(trimmedInput);
   const date = new Date(seconds * 1000);
+  const utcYear = date.getUTCFullYear();
+
+  if (Number.isNaN(date.getTime())) {
+    throw new Error('변환 가능한 날짜 범위를 벗어났습니다.');
+  }
+
+  if (Number.isNaN(date.getTime()) || utcYear < 0 || utcYear > 9999) {
+    throw new Error('변환 가능한 날짜 범위를 벗어났습니다.');
+  }
 
   return date.toISOString().slice(0, 19).replace('T', ' ');
 }
