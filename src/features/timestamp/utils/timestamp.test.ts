@@ -1,5 +1,5 @@
 import { expect, test } from '@jest/globals';
-import { timestampToUtc } from './timestamp';
+import { timestampToUtc } from './timestamp.ts';
 
 test('timestamp 0을 UTC 기준 날짜와 시간으로 변환', () => {
   expect(timestampToUtc('0')).toBe('1970-01-01 00:00:00');

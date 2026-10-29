@@ -1,4 +1,4 @@
-import { TIMESTAMP_ERROR_MESSAGES } from './errorMessages.ts';
+import { TIMESTAMP_ERROR_MESSAGES } from '../constants/errorMessages.ts';
 
 /**
  * @description 초 단위 Unix timestamp 문자열을 UTC 날짜와 시간으로 변환

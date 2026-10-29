@@ -1,6 +1,6 @@
 import './App.css';
 import { type SubmitEventHandler, useState } from 'react';
-import { timestampToUtc } from './timestamp.ts';
+import { timestampToUtc } from './features/timestamp/utils/timestamp.ts';
 
 function App() {
   const [timestampInput, setTimestampInput] = useState('');
