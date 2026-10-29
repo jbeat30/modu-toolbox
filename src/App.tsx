@@ -33,13 +33,16 @@ function App() {
         <p id="timestampHelp">초 단위 정수를 입력해 주세요.</p>
 
         <input
-          id="timestamp"
+          id="timestampInput"
           type="text"
           value={timestampInput}
-          onChange={(event) => setTimestampInput(event.target.value)}
+          onChange={(event) => {
+            setTimestampInput(event.target.value);
+            setUtcResult('');
+            setErrorMessage('');
+          }}
           aria-describedby={errorMessage ? 'timestampHelp timestampError' : 'timestampHelp'}
           aria-invalid={!!errorMessage}
-          style={{ border: errorMessage ? '2px solid red' : undefined }}
         />
         <button type="submit">변환</button>
 
