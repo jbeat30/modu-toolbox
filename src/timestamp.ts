@@ -1,3 +1,5 @@
+import { TIMESTAMP_ERROR_MESSAGES } from './errorMessages.ts';
+
 /**
  * @description 초 단위 Unix timestamp 문자열을 UTC 날짜와 시간으로 변환
  * @param input 앞뒤 공백을 허용하는 십진수 정수 문자열
@@ -9,11 +11,11 @@ export function timestampToUtc(input: string): string {
   const trimmedInput = input.trim();
 
   if (trimmedInput === '') {
-    throw new Error('Unix timestamp를 입력해 주세요.');
+    throw new Error(TIMESTAMP_ERROR_MESSAGES.REQUIRED);
   }
 
   if (!/^-?\d+$/.test(trimmedInput)) {
-    throw new Error('Unix timestamp는 정수로 입력해 주세요.');
+    throw new Error(TIMESTAMP_ERROR_MESSAGES.INTEGER_REQUIRED);
   }
 
   const seconds = Number(trimmedInput);
@@ -21,11 +23,11 @@ export function timestampToUtc(input: string): string {
   const utcYear = date.getUTCFullYear();
 
   if (Number.isNaN(date.getTime())) {
-    throw new Error('변환 가능한 날짜 범위를 벗어났습니다.');
+    throw new Error(TIMESTAMP_ERROR_MESSAGES.OUT_OF_RANGE);
   }
 
   if (Number.isNaN(date.getTime()) || utcYear < 0 || utcYear > 9999) {
-    throw new Error('변환 가능한 날짜 범위를 벗어났습니다.');
+    throw new Error(TIMESTAMP_ERROR_MESSAGES.OUT_OF_RANGE);
   }
 
   return date.toISOString().slice(0, 19).replace('T', ' ');
